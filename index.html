@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小马接金币游戏 - 2026碧海宝安区设计大赛-唐荣麒作品</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #0f172a;
+            color: #e2e8f0;
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(30, 41, 59, 0.9);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            margin-top: 20px;
+        }
+        h1 {
+            color: #fbbf24;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.8em;
+            text-shadow: 0 2px 10px rgba(251, 191, 36, 0.3);
+        }
+        h2 {
+            color: #60a5fa;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: normal;
+        }
+        .warning {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.15), rgba(251, 191, 36, 0.05));
+            border: 2px solid #fbbf24;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 25px 0;
+            font-size: 1.1em;
+            text-align: center;
+        }
+        .highlight {
+            color: #fbbf24;
+            font-weight: bold;
+        }
+        .section {
+            margin: 35px 0;
+            padding: 25px;
+            background: rgba(15, 23, 42, 0.7);
+            border-radius: 10px;
+            border-left: 5px solid #3b82f6;
+        }
+        .game-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        .image-card {
+            background: #1e293b;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid #334155;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .image-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        .game-img {
+            width: 100%;
+            height: 180px;
+            object-fit: contain;
+            background: #0f172a;
+            padding: 15px;
+        }
+        .img-label {
+            padding: 12px;
+            text-align: center;
+            background: rgba(30, 41, 59, 0.9);
+            font-weight: bold;
+            color: #cbd5e1;
+        }
+        .game-structure {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            line-height: 1.8;
+            margin: 15px 0;
+            border: 1px solid #475569;
+        }
+        .key {
+            display: inline-block;
+            background: #475569;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 5px;
+            margin: 0 5px;
+            font-family: monospace;
+            border: 1px solid #64748b;
+            font-weight: bold;
+        }
+        .control-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .control-item {
+            background: rgba(59, 130, 246, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        .run-steps {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9));
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border: 2px solid #10b981;
+        }
+        .author-info {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 2px solid #475569;
+            color: #94a3b8;
+            background: rgba(15, 23, 42, 0.7);
+            border-radius: 10px;
+            padding: 25px;
+        }
+        .button {
+            display: inline-block;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 15px 10px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1em;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+        }
+        .button-yellow {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+        .button-yellow:hover {
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+        }
+        .code-block {
+            background: #0f172a;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: monospace;
+            border-left: 4px solid #10b981;
+        }
+        .hero-section {
+            text-align: center;
+            margin: 30px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(245, 158, 11, 0.1));
+            border-radius: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero-section">
+            <h1>🐎 小马接金币游戏</h1>
+            <h2>超级金币雨版 - 2026碧海宝安区设计大赛作品</h2>
+            <p style="font-size: 1.2em; color: #cbd5e1; margin-top: 15px;">
+                使用 Pygame Zero 开发的精彩游戏 - 作者：唐荣麒 ©2026
+            </p>
+        </div>
+        
+        <div class="warning">
+            <strong>📌 重要提示：</strong> GitHub Pages 是静态页面托管服务，
+            <span class="highlight">无法直接运行 Python 游戏</span>。
+            请按照以下说明下载到本地运行游戏。
+        </div>
+        
+        <!-- 游戏图片展示区 -->
+        <div class="section">
+            <h3 style="text-align: center; margin-bottom: 25px;">🖼️ 游戏素材展示</h3>
+            <p style="text-align: center; color: #94a3b8; margin-bottom: 20px;">
+                以下图片来自游戏资源文件夹：
+            </p>
+            
+            <div class="game-images">
+                <!-- 小马图片 -->
+                <div class="image-card">
+                    <img id="horse-img" class="game-img" alt="小马角色">
+                    <div class="img-label">小马角色 (aaaa.png)</div>
+                </div>
+                
+                <!-- 金币图片 -->
+                <div class="image-card">
+                    <img id="gold-img" class="game-img" alt="金币">
+                    <div class="img-label">金币 (gold.png)</div>
+                </div>
+                
+                <!-- 背景图片 -->
+                <div class="image-card">
+                    <img id="bg-img" class="game-img" alt="游戏背景">
+                    <div class="img-label">游戏背景 (yw.jpg)</div>
+                </div>
+                
+                <!-- 其他图片 -->
+                <div class="image-card">
+                    <img id="other1-img" class="game-img" alt="游戏元素">
+                    <div class="img-label">游戏元素 (aa.png)</div>
+                </div>
+                
+                <div class="image-card">
+                    <img id="other2-img" class="game-img" alt="游戏元素">
+                    <div class="img-label">游戏元素 (fc.png)</div>
+                </div>
+            </div>
+            
+            <p style="text-align: center; margin-top: 20px; color: #94a3b8;">
+                共 5 张游戏图片，全部位于 <code>2026-设计大赛-唐荣麒-作品/images/</code> 文件夹
+            </p>
+        </div>
+        
+        <div class="section">
+            <h3>🎮 游戏特色</h3>
+            <ul style="font-size: 1.1em; padding-left: 20px;">
+                <li>经典的小马接金币玩法，简单易上手</li>
+                <li>炫酷的超级金币雨特效，视觉震撼</li>
+                <li>三种实用道具：密度+、金币雨、时间+</li>
+                <li>多种金币类型：普通、特殊、超级金币</li>
+                <li>精美的游戏画面和流畅的动画效果</li>
+                <li>完整的计分系统和时间管理系统</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h3>🎯 游戏控制</h3>
+            <div class="control-group">
+                <div class="control-item">
+                    <span class="key">←</span> <span class="key">→</span>
+                    <div style="margin-top: 8px; color: #cbd5e1;">移动小马</div>
+                </div>
+                <div class="control-item">
+                    <span class="key">1</span>
+                    <div style="margin-top: 8px; color: #cbd5e1;">密度道具</div>
+                </div>
+                <div class="control-item">
+                    <span class="key">2</span>
+                    <div style="margin-top: 8px; color: #cbd5e1;">金币雨</div>
+                </div>
+                <div class="control-item">
+                    <span class="key">3</span>
+                    <div style="margin-top: 8px; color: #cbd5e1;">时间道具</div>
+                </div>
+                <div class="control-item">
+                    <span class="key">R</span>
+                    <div style="margin-top: 8px; color: #cbd5e1;">重新开始</div>
+                </div>
+                <div class="control-item">
+                    <span class="key">P</span>
+                    <div style="margin-top: 8px; color: #cbd5e1;">暂停/继续</div>
+                </div>
+                <div class="control-item">
+                    <span class="key">ESC</span>
+                    <div style="margin-top: 8px; color: #cbd5e1;">退出游戏</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>📁 项目文件结构</h3>
+            <div class="game-structure">
+<span style="color:#fbbf24">你的仓库根目录/</span>
+├── <span style="color:#60a5fa">index.html</span>            ← 本介绍页面
+├── <span style="color:#60a5fa">.github/workflows/github-pages.yml</span>
+└── <span style="color:#fbbf24">2026-设计大赛-唐荣麒-作品/</span>  ← 游戏主文件夹
+    ├── <span style="color:#10b981">main.py</span>           ← 游戏主程序
+    ├── <span style="color:#10b981">images/</span>           ← 图片文件夹
+    │   ├── <span style="color:#fbbf24">aa.png</span>      ← 游戏元素
+    │   ├── <span style="color:#fbbf24">aaaa.png</span>    ← 小马角色
+    │   ├── <span style="color:#fbbf24">fc.png</span>      ← 游戏元素
+    │   ├── <span style="color:#fbbf24">gold.png</span>    ← 金币
+    │   └── <span style="color:#fbbf24">yw.jpg</span>      ← 背景图片
+    └── <span style="color:#10b981">fonts/</span>            ← 字体文件
+        └── <span style="color:#fbbf24">font.ttf</span>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>🚀 如何运行游戏</h3>
+            <div class="run-steps">
+                <h4>📦 安装环境</h4>
+                <div class="code-block">
+# 1. 安装 Python 3.7 或更高版本
+# 从 https://www.python.org/downloads/ 下载
+
+# 2. 安装 Pygame Zero
+pip install pgzero
+
+# 3. 验证安装
+python -c "import pgzero; print('安装成功！')"
+                </div>
+                
+                <h4>▶️ 运行游戏</h4>
+                <div class="code-block">
+# 1. 进入游戏文件夹
+cd "2026-设计大赛-唐荣麒-作品"
+
+# 2. 运行游戏
+python main.py
+
+# 或者直接指定完整路径
+python "2026-设计大赛-唐荣麒-作品/main.py"
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="button" onclick="showTroubleshooting()">🛠️ 常见问题解答</button>
+                <button class="button button-yellow" onclick="copyCommands()">📋 复制运行命令</button>
+            </div>
+            
+            <div id="troubleshooting" style="display: none; margin-top: 25px; padding: 20px; background: rgba(30, 41, 59, 0.7); border-radius: 10px;">
+                <h4>🔧 常见问题解决</h4>
+                <p><strong>Q: 图片无法加载？</strong></p>
+                <p>A: 确保在 <code>2026-设计大赛-唐荣麒-作品/</code> 文件夹内运行，图片文件在 <code>images/</code> 子文件夹中。</p>
+                
+                <p><strong>Q: 缺少 pygame 模块？</strong></p>
+                <p>A: 运行 <code>pip install pygame pgzero</code> 安装所需模块。</p>
+                
+                <p><strong>Q: 如何调整游戏窗口大小？</strong></p>
+                <p>A: 修改 <code>main.py</code> 中的 <code>WIDTH</code> 和 <code>HEIGHT</code> 变量。</p>
+            </div>
+        </div>
+        
+        <div class="author-info">
+            <h3 style="color:#fbbf24; margin-bottom: 20px;">👨‍💻 作品信息</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: left;">
+                <div>
+                    <p><strong>📛 作品名称：</strong><br>小马接金币游戏 - 超级金币雨版</p>
+                    <p><strong>👤 作&nbsp;&nbsp;&nbsp;&nbsp;者：</strong><br>唐荣麒</p>
+                </div>
+                <div>
+                    <p><strong>🏆 比赛名称：</strong><br>2026碧海宝安区设计大赛</p>
+                    <p><strong>💻 开发技术：</strong><br>Python + Pygame Zero</p>
+                </div>
+                <div>
+                    <p><strong>📅 完成时间：</strong><br>2026年</p>
+                    <p><strong>© 版权所有：</strong><br>唐荣麒 2026</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 设置图片路径 - 使用相对路径
+        function setupImages() {
+            // 图片路径前缀
+            const prefix = '2026-设计大赛-唐荣麒-作品/images/';
+            
+            // 设置各图片的src
+            document.getElementById('horse-img').src = prefix + 'aaaa.png';
+            document.getElementById('gold-img').src = prefix + 'gold.png';
+            document.getElementById('bg-img').src = prefix + 'yw.jpg';
+            document.getElementById('other1-img').src = prefix + 'aa.png';
+            document.getElementById('other2-img').src = prefix + 'fc.png';
+            
+            // 图片加载失败的备用文本
+            const images = document.querySelectorAll('.game-img');
+            images.forEach(img => {
+                img.onerror = function() {
+                    this.style.background = '#1e293b';
+                    this.style.display = 'flex';
+                    this.style.alignItems = 'center';
+                    this.style.justifyContent = 'center';
+                    this.innerHTML = `<div style="color:#94a3b8; text-align:center;">
+                        <div style="font-size:2em;">🖼️</div>
+                        <div>图片路径: ${this.src.split('/').pop()}</div>
+                        <div style="font-size:0.8em; margin-top:5px;">请在本地运行游戏查看</div>
+                    </div>`;
+                };
+            });
+        }
+        
+        function showTroubleshooting() {
+            const div = document.getElementById('troubleshooting');
+            div.style.display = div.style.display === 'none' ? 'block' : 'none';
+        }
+        
+        function copyCommands() {
+            const commands = `cd "2026-设计大赛-唐荣麒-作品"\npython main.py`;
+            navigator.clipboard.writeText(commands).then(() => {
+                alert('已复制运行命令到剪贴板！\n\n' + commands);
+            });
+        }
+        
+        // 页面加载时设置图片
+        window.onload = function() {
+            setupImages();
+            console.log('🎮 小马接金币游戏展示页加载完成');
+            console.log('📁 游戏路径: 2026-设计大赛-唐荣麒-作品/');
+            console.log('🖼️ 图片数量: 5张');
+            
+            // 检查图片加载状态
+            setTimeout(() => {
+                const images = document.querySelectorAll('.game-img');
+                let loaded = 0;
+                images.forEach(img => {
+                    if (img.complete && img.naturalHeight !== 0) loaded++;
+                });
+                console.log(`✅ 图片加载: ${loaded}/${images.length}`);
+            }, 1000);
+        };
+    </script>
+</body>
+</html>
